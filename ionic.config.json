@@ -1,0 +1,7 @@
+{
+  "name": "ambev-app",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}
