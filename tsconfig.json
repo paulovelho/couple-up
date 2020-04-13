@@ -17,6 +17,11 @@
     "lib": [
       "es2018",
       "dom"
-    ]
+    ],
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "paths": {
+      "@app/*": ["src/app/*"],
+    },
   }
 }

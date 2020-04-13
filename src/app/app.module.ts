@@ -14,8 +14,7 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AppConfig } from './app.config';
 
-import { PushService } from './services/push.service';
-import { LogService } from './services/log.service';
+import { CategoriesService } from './services/categories.service';
 
 const firebaseConfig = {
     apiKey: "AIzaSyDgCd6I3FXemBZAw6LbvR_WxYxmlIqJ68M",
@@ -43,8 +42,7 @@ const firebaseConfig = {
     SplashScreen,
     Firebase,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
-    PushService,
-    LogService,
+    CategoriesService,
   ],
   bootstrap: [AppComponent]
 })

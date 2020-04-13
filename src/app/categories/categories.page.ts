@@ -3,11 +3,11 @@ import { Component, OnInit } from '@angular/core';
 import { CategoriesService } from '@app/services/categories.service';
 
 @Component({
-	selector: 'app-home',
-	templateUrl: 'home.page.html',
-	styleUrls: ['home.page.scss'],
+	selector: 'app-categories',
+	templateUrl: 'categories.page.html',
+	styleUrls: ['categories.page.scss'],
 })
-export class HomePage implements OnInit {
+export class CategoriesPage implements OnInit {
 
 	constructor(
 		private categories: CategoriesService
