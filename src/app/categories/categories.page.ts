@@ -10,12 +10,28 @@ import { CategoriesService } from '@app/services/categories.service';
 export class CategoriesPage implements OnInit {
 
 	constructor(
-		private categories: CategoriesService
+		private categoriesService: CategoriesService
 	) {}
 
+	public categories: Array<any> = [];
+	private selected: Array<string> = [];
+
+	public toggleSelection(cat: any) {
+		if(this.isSelected(cat.id)) {
+			this.selected = this.selected.filter(c => c !== cat.id);
+		} else {
+			this.selected.push(cat.id);
+		}
+		console.info(this.selected);
+	}
+
+	public isSelected(cat_id: string) {
+		return this.selected.includes(cat_id);
+	}
+
 	ngOnInit() {
-		let categories = this.categories.GetCategories();
-		console.info("categories: ", categories);
+		this.categories = this.categoriesService.GetCategories();
+		console.info("categories: ", this.categories);
 	}
 
 }

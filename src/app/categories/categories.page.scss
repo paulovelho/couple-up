@@ -1,0 +1,26 @@
+
+.item {
+	--ion-background-color: var(--item-background);
+	font-weight: bold;
+	&:hover {
+		--ion-background-color: var(--item-hover);
+	}
+	.check-icon {
+		opacity: 0;
+	}
+}
+
+.selected {
+	--ion-background-color: var(--item-select);
+	color: #FFF;
+	&:hover {
+		--ion-background-color: var(--item-select-hover);
+	}
+	ion-icon {
+		color: #FFF;
+	}
+	.check-icon {
+		opacity: 1;
+	}
+}
+

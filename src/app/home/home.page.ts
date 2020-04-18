@@ -10,12 +10,9 @@ import { CategoriesService } from '@app/services/categories.service';
 export class HomePage implements OnInit {
 
 	constructor(
-		private categories: CategoriesService
 	) {}
 
 	ngOnInit() {
-		let categories = this.categories.GetCategories();
-		console.info("categories: ", categories);
 	}
 
 }

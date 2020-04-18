@@ -13,7 +13,7 @@ import { CategoriesPage } from './categories.page';
     IonicModule,
     RouterModule.forChild([
       {
-        path: 'List',
+        path: '',
         component: CategoriesPage
       }
     ])

@@ -1,15 +1,25 @@
 <ion-header>
 	<ion-toolbar>
-	<ion-title>
-		COUPLES UP
-	</ion-title>
+		<ion-buttons slot="start">
+			<ion-back-button></ion-back-button>
+		</ion-buttons>
+		<ion-title>
+			Categorias
+		</ion-title>
 	</ion-toolbar>
 </ion-header>
 
-<ion-content>
-	<div class="ion-padding">
-
-		LIST
-
-	</div>
+<ion-content class="padding">
+	<ion-list *ngIf="categories.length > 0">
+		<!-- add a section header -->
+		<ion-item 
+			*ngFor="let item of categories"
+			class="ion-text-center item"
+			[ngClass]="{ 'selected': isSelected(item.id) }"
+			(click)="toggleSelection(item);">
+			<ion-icon class="check-icon" name="checkmark-circle-outline"></ion-icon>
+			<ion-label class="title">{{item.title}}</ion-label>
+		</ion-item>
+	</ion-list>
 </ion-content>
+
