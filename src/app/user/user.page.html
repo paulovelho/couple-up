@@ -1,0 +1,25 @@
+<ion-header>
+	<ion-toolbar>
+		<ion-buttons slot="start">
+			<ion-back-button></ion-back-button>
+		</ion-buttons>
+		<ion-title>
+			Novo Usuário
+		</ion-title>
+	</ion-toolbar>
+</ion-header>
+
+<ion-content class="padding">
+
+	<ion-item>
+		<ion-label>Nome</ion-label>
+		<ion-input type="text" [(ngModel)]="name" name="nome"></ion-input>
+	</ion-item>
+	<ion-item>
+		<ion-label>Senha de acesso</ion-label>
+		<ion-input type="password" [(ngModel)]="passcode" name="passcode" show-hide-input></ion-input>
+	</ion-item>
+	<ion-button type="submit" expand="full" (click)="register()" block>Cadastrar e Selecionar Categorias</ion-button>
+
+</ion-content>
+

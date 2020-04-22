@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
+import { IonicStorageModule } from '@ionic/storage';
 
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
@@ -14,7 +15,9 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AppConfig } from './app.config';
 
+import { ActiveService } from './services/active.service';
 import { CategoriesService } from './services/categories.service';
+import { UsersService } from './services/users.service';
 
 const firebaseConfig = {
     apiKey: "AIzaSyDgCd6I3FXemBZAw6LbvR_WxYxmlIqJ68M",
@@ -35,6 +38,10 @@ const firebaseConfig = {
     AppRoutingModule,
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFirestoreModule,
+    IonicStorageModule.forRoot({
+      name: 'couplesup-db',
+      driverOrder: ['localstorage','websql','indexeddb']
+    })
   ],
   providers: [
     AppConfig,
@@ -42,7 +49,9 @@ const firebaseConfig = {
     SplashScreen,
     Firebase,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+    ActiveService,
     CategoriesService,
+    UsersService,
   ],
   bootstrap: [AppComponent]
 })

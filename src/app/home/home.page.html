@@ -7,6 +7,18 @@
 
 <ion-content class="padding">
 	<br/><br/>
-  <ion-button expand="full" [routerLink]="['/list']">Categorias</ion-button>
+	<ion-list *ngIf="users.length > 0">
+		<!-- add a section header -->
+		<ion-item 
+			*ngFor="let item of users"
+			class="ion-text-center item">
+			<ion-label class="title">{{item.name}}</ion-label>
+		</ion-item>
+	</ion-list>
+	<br/><br/>
+	<ion-button expand="full" [routerLink]="['/user']" icon-start>
+		<ion-icon name="person-circle-outline" slot="start"></ion-icon>
+		Nova pessoa
+	</ion-button>
 </ion-content>
 

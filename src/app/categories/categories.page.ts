@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
+import { ActiveService } from '@app/services/active.service';
 import { CategoriesService } from '@app/services/categories.service';
 
 @Component({
@@ -10,9 +11,11 @@ import { CategoriesService } from '@app/services/categories.service';
 export class CategoriesPage implements OnInit {
 
 	constructor(
-		private categoriesService: CategoriesService
+		private active: ActiveService,
+		private categoriesService: CategoriesService,
 	) {}
 
+	public username: string;
 	public categories: Array<any> = [];
 	private selected: Array<string> = [];
 
@@ -22,6 +25,7 @@ export class CategoriesPage implements OnInit {
 		} else {
 			this.selected.push(cat.id);
 		}
+		this.active.saveCategories(this.selected);
 		console.info(this.selected);
 	}
 
@@ -30,8 +34,12 @@ export class CategoriesPage implements OnInit {
 	}
 
 	ngOnInit() {
-		this.categories = this.categoriesService.GetCategories();
-		console.info("categories: ", this.categories);
+		this.username = this.active.getActiveUserName();
+		this.active.getActiveCategories()
+			.then((cats) => {
+				this.categories = this.categoriesService.GetCategories();
+				this.selected = cats; 
+			});
 	}
 
 }
