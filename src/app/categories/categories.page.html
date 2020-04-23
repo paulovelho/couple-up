@@ -17,9 +17,13 @@
 			class="ion-text-center item"
 			[ngClass]="{ 'selected': isSelected(item.id) }"
 			(click)="toggleSelection(item);">
-			<ion-icon class="check-icon" name="checkmark-circle-outline"></ion-icon>
+			<ion-icon class="check-icon" name="checkmark-circle"></ion-icon>
 			<ion-label class="title">{{item.title}}</ion-label>
 		</ion-item>
 	</ion-list>
+	<ion-button expand="full" icon-start (click)="save()">
+		<ion-icon name="save"></ion-icon> 
+		Salvar
+	</ion-button>
 </ion-content>
 

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { ActiveService } from '@app/services/active.service';
 import { CategoriesService } from '@app/services/categories.service';
@@ -11,11 +12,14 @@ import { CategoriesService } from '@app/services/categories.service';
 export class CategoriesPage implements OnInit {
 
 	constructor(
+		private route: Router,
 		private active: ActiveService,
 		private categoriesService: CategoriesService,
 	) {}
 
+	public user: any;
 	public username: string;
+
 	public categories: Array<any> = [];
 	private selected: Array<string> = [];
 
@@ -33,13 +37,24 @@ export class CategoriesPage implements OnInit {
 		return this.selected.includes(cat_id);
 	}
 
-	ngOnInit() {
-		this.username = this.active.getActiveUserName();
-		this.active.getActiveCategories()
-			.then((cats) => {
-				this.categories = this.categoriesService.GetCategories();
-				this.selected = cats; 
-			});
+	public save() {
+		this.selected = [];
+		this.active.saveActive(this.user)
+			.then(() => {
+				this.route.navigate(['/home']);
+			})
+			.catch(err => console.error(err));
+	}
+
+	async ngOnInit() {
+		this.user = await this.active.getActiveUser();
+		if( !this.user) {
+			this.route.navigate(['/home']);
+			return;
+		}
+		this.username = this.user.name;
+		this.categories = this.categoriesService.GetCategories();
+		this.selected = await this.active.getActiveCategories();
 	}
 
 }

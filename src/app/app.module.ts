@@ -18,6 +18,7 @@ import { AppConfig } from './app.config';
 import { ActiveService } from './services/active.service';
 import { CategoriesService } from './services/categories.service';
 import { UsersService } from './services/users.service';
+import { StoreService } from './services/store.service';
 
 const firebaseConfig = {
     apiKey: "AIzaSyDgCd6I3FXemBZAw6LbvR_WxYxmlIqJ68M",
@@ -52,6 +53,7 @@ const firebaseConfig = {
     ActiveService,
     CategoriesService,
     UsersService,
+    StoreService,
   ],
   bootstrap: [AppComponent]
 })

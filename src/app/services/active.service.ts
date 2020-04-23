@@ -1,38 +1,31 @@
 import { Injectable } from '@angular/core';
 import { Platform } from '@ionic/angular';
-import { Storage } from '@ionic/storage';
+
+import { UsersService } from './users.service';
+import { StoreService } from './store.service';
 
 @Injectable()
 export class ActiveService {
 
-	private user;
+	private user = null;
 
 	constructor(
-		private store:Storage
+		private users: UsersService,
+		private store: StoreService,
 	) {}
 
-	public getUsers() {
-		if(!this.user) return false;
-		return this.user.userName;
-	}
-
 	public getActiveUser() {
-		if(this.user) {
-			return this.user;
-		}
-	}
-	public getActiveUserName() {
-		return this.getActiveUser().name;
+		return this.user;
 	}
 
 	public async setUser(user) {
 		this.user = user;
-		let userList = await this.store.get("users");
-		if(!userList) {
-			userList = [];
-		}
-		userList.push(user);
-		this.store.set("users", userList);
+		await this.users.saveUser(user);
+	}
+
+	public async saveActive(user) {
+		this.user = null;
+		return this.users.saveUser(user);
 	}
 
 	public saveCategories(cats) {

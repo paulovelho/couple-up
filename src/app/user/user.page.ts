@@ -3,8 +3,7 @@ import { Router } from '@angular/router';
 
 import { ActiveService } from '@app/services/active.service';
 import { CategoriesService } from '@app/services/categories.service';
-
-declare var require: any;
+import { UsersService } from '@app/services/users.service';
 
 @Component({
 	selector: 'app-user',
@@ -16,22 +15,21 @@ export class UserPage implements OnInit {
 	constructor(
 		private route: Router,
 		private active: ActiveService,
+		private users: UsersService,
 	) {}
 
 	public name: string = "";
-	public pass: string = "";
+	public passcode: string = "";
 
 
 	public register() {
-		var sha1 = require('sha1');
-		let code = sha1(this.pass);
 		let user = {
 			name: this.name,
-			pass: code,
+			pass: this.users.encryptPassword(this.passcode)
 		};
 		this.active.setUser(user)
 			.then(() => {
-				this.route.navigate(['/list'])
+				this.route.navigate(['/list']);
 			});
 	}
 
