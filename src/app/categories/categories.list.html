@@ -1,0 +1,8 @@
+<ion-list *ngIf="catList.length > 0">
+	<!-- add a section header -->
+	<ion-item 
+		*ngFor="let item of catList"
+		class="ion-text-center cat-item">
+		<ion-label class="title">{{item.title}}</ion-label>
+	</ion-item>
+</ion-list>

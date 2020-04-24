@@ -17,6 +17,7 @@ export class UsersService {
 		if(!userList) {
 			userList = [];
 		}
+		user.categories = [];
 		userList.push(user);
 		this.store.set("users", userList);
 	}

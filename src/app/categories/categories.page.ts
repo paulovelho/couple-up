@@ -9,7 +9,7 @@ import { CategoriesService } from '@app/services/categories.service';
 	templateUrl: 'categories.page.html',
 	styleUrls: ['categories.page.scss'],
 })
-export class CategoriesPage implements OnInit {
+export class CategoriesPage {
 
 	constructor(
 		private route: Router,
@@ -38,6 +38,7 @@ export class CategoriesPage implements OnInit {
 	}
 
 	public save() {
+		this.user.categories = this.selected;
 		this.selected = [];
 		this.active.saveActive(this.user)
 			.then(() => {
@@ -46,15 +47,15 @@ export class CategoriesPage implements OnInit {
 			.catch(err => console.error(err));
 	}
 
-	async ngOnInit() {
+	async ionViewWillEnter() {
 		this.user = await this.active.getActiveUser();
 		if( !this.user) {
 			this.route.navigate(['/home']);
 			return;
 		}
 		this.username = this.user.name;
+		this.selected = this.user.categories;
 		this.categories = this.categoriesService.GetCategories();
-		this.selected = await this.active.getActiveCategories();
 	}
 
 }

@@ -12,21 +12,39 @@
 		<ion-item 
 			*ngFor="let item of users"
 			class="ion-text-center item">
-			<ion-label class="title">{{item.name}}</ion-label>
-			<ion-button item-right color="tertiary" (click)="userEdit(item)">
-				<ion-icon name="create" slot="start"></ion-icon>
-				Editar
-			</ion-button>
-			<ion-button item-right color="tertiary" (click)="userDelete(item);">
-				<ion-icon name="trash" slot="start"></ion-icon>
-				Apagar
-			</ion-button>
+			<ion-checkbox slot="start" [(ngModel)]="item.selected" (ionChange)="clickPerson()"></ion-checkbox>
+			<ion-label class="title" value="item.id">{{item.name}}</ion-label>
 		</ion-item>
 	</ion-list>
-	<br/><br/>
-	<ion-button expand="full" [routerLink]="['/user']" icon-start>
-		<ion-icon name="person" slot="start"></ion-icon>
+	<br/>
+	<hr/>
+	<ion-button item-right color="tertiary" (click)="userEdit();" *ngIf="selected.length == 1">
+		<ion-icon name="create" slot="start"></ion-icon>
+		Editar
+	</ion-button>
+	<ion-button item-right color="tertiary" (click)="userDelete();" *ngIf="selected.length == 1">
+		<ion-icon name="trash" slot="start"></ion-icon>
+		Apagar
+	</ion-button>
+
+	<ion-button expand="full" color="secondary" (click)="compare()" *ngIf="selected.length > 1">
+		<ion-icon name="list" slot="start"></ion-icon>
+		Comparar
+	</ion-button>
+	<ion-button expand="full" [routerLink]="['/user']" *ngIf="selected.length == 0">
+		<ion-icon name="person-add" slot="start"></ion-icon>
 		Nova pessoa
 	</ion-button>
+
+	<br/>
+
+	<div class="result" *ngIf="result.length > 0">
+		<hr/>
+		<div>
+			Resultado da comparação de listas entre {{ comparingMembers }}
+		</div>
+		<categories-list [categories]="result"></categories-list>
+	</div>
+
 </ion-content>
 

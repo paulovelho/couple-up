@@ -29,7 +29,6 @@ export class ActiveService {
 	}
 
 	public saveCategories(cats) {
-		this.store.set("test", "cats");
 		this.store.set("categories", cats);
 	}
 	public getActiveCategories() {
