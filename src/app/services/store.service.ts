@@ -18,6 +18,10 @@ export class StoreService {
 		return n;
 	}
 
+	public clear() {
+		this.store.clear();
+	}
+
 	public get(key: string) {
 		return this.store.get(key);
 	}

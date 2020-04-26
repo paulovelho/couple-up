@@ -4,6 +4,7 @@ import { AlertController } from '@ionic/angular';
 import { FormsModule } from '@angular/forms';
 
 import { ActiveService } from '@app/services/active.service';
+import { StoreService } from '@app/services/store.service';
 import { UsersService } from '@app/services/users.service';
 
 @Component({
@@ -17,6 +18,7 @@ export class HomePage {
 		private route: Router,
 		private alerter: AlertController,
 		private active: ActiveService,
+		private store: StoreService,
 		private UsersService: UsersService,
 	) {}
 
@@ -126,7 +128,26 @@ export class HomePage {
 		return arr1.filter(element => arr2.includes(element));
 	}
 
+	private async privacyMessage() {
+		let privacy = await this.store.get("privacy-displayed");
+		if(privacy) return;
+		let alert = await this.alerter.create({
+			header: 'Privacidade',
+			message: 'Este aplicativo não manda nenhuma informação para servidores. Todos os dados ficam armazenados no próprio navegador.<br/>',
+			buttons: [{
+				text: 'Que bom!',
+				cssClass: 'secondary',
+				handler: () => {
+					this.store.set('privacy-displayed', true);
+					console.info("saving");
+				}
+			}]
+		});
+		await alert.present();
+	}
+
 	ionViewWillEnter() {
+		this.privacyMessage();
 		this.loadUsers();
 	}
 
