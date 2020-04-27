@@ -4,7 +4,6 @@ import { IonicModule } from '@ionic/angular';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
-import { CategoriesList } from './categories.list';
 import { CategoriesPage } from './categories.page';
 
 @NgModule({
@@ -20,7 +19,6 @@ import { CategoriesPage } from './categories.page';
     ])
   ],
   declarations: [
-    CategoriesList,
     CategoriesPage,
   ]
 })
