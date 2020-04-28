@@ -1,8 +1,8 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget id="com.ambev.servicenow" version="1.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-    <name>Click</name>
-    <description>Service Now Ambev App</description>
-    <author email="paulomartins@alpar.com.br">Alpar Service Now</author>
+    <name>Couple Up</name>
+    <description>O que você pode fazer pra apimentar sua relação?</description>
+    <author email="coupleup@platypusweb.com.br">Platypus Technology</author>
     <content src="index.html" />
     <access origin="*" />
     <allow-intent href="http://*/*" />
