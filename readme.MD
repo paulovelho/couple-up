@@ -9,9 +9,6 @@ node version: 10.9.0
 
 ---
 
-### version update
-update version on files `config.xml`.
-
 
 ## web
 `ionic cordova platform add browser`
