@@ -21,7 +21,7 @@ node version: 10.9.0
 `ionic cordova run android --verbose -l -c -s --debug` => runs application with debugging enabled
 
 ### publishing for Android
-`keytool -genkey -v -keystore coupleup.keystore -alias coupleup -keyalg RSA -keysize 2048 -validity 10000`
+`keytool -genkey -v -keystore coupleup.keystore -alias coupleup -keyalg RSA -keysize 2048 -validity 10000` // anos60
 
 `ionic cordova build android --prod --release --verbose` => build for production
 
