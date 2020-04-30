@@ -5,7 +5,7 @@ node version: 10.9.0
 ## commands
 `ionic serve` => runs application in localhost (available at http://localhost:8100/)
 
-`ionic cordova resources --icon` => generate icons (based on `resources/icon`)
+`ionic cordova resources --verbose` => generate icons (based on `resources/icon`)
 
 ---
 
