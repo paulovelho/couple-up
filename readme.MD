@@ -65,10 +65,6 @@ and navigate to `platforms/ios`
 
 , then, open the project (workspace file) on XCode and compile through it.
 
-#### changes in swift code:
-file `plugins/CDVUIInAppBrowser.m`:
-remove line `[self.view addSubview:self.toolbar];`
-
 
 #### generating .ipa
 Go to 
