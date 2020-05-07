@@ -41,10 +41,16 @@
 
 	<br/>
 
-	<div class="result" *ngIf="result.length > 0">
+	<div class="result" *ngIf="calculated">
 		<hr/>
 		<div>
 			Resultado da comparação de listas entre {{ comparingMembers }}
+		</div>
+		<div *ngIf="result.length == 0" text-center>
+			<br/><br/>
+			Não há itens em comum nas listas de {{ comparingMembers }}.<br/>
+			O que não significa que vocês não sejam um casal fofo!<br/><br/>
+			&lt;3
 		</div>
 		<categories-list [categories]="result"></categories-list>
 	</div>

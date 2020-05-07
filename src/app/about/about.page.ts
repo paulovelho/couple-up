@@ -17,8 +17,20 @@ export class AboutPage {
 		private store: StoreService,
 	) {}
 
-	public clear(): void {
+	public async clear() {
 		this.store.clear();
+		let alert = await this.alerter.create({
+			header: 'Privacidade',
+			message: 'Dados apagados com sucesso.',
+			buttons: [{
+				text: 'Boa!',
+				cssClass: 'secondary',
+				handler: () => {
+					this.route.navigate(['/home']);
+				}
+			}]
+		});
+		await alert.present();
 	}
 
 	ionViewWillEnter() {
