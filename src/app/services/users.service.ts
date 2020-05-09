@@ -32,6 +32,7 @@ export class UsersService {
 	}
 
 	public async saveUser(user) {
+		console.info("saving ", user);
 		if(!user.id) {
 			user.id = await this.store.getIncrement("user");
 			return this.addUser(user);

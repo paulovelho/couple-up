@@ -25,10 +25,7 @@ import { StoreService } from './services/store.service';
     IonicModule.forRoot(),
     AppRoutingModule,
     FormsModule,
-    IonicStorageModule.forRoot({
-      name: 'couplesup-db',
-      driverOrder: ['localstorage','websql','indexeddb']
-    })
+    IonicStorageModule.forRoot()
   ],
   providers: [
     AppConfig,
