@@ -27,6 +27,7 @@ export class UserPage implements OnInit {
 			name: this.name,
 			pass: this.users.encryptPassword(this.passcode)
 		};
+		console.info("registering ", user);
 		this.active.setUser(user)
 			.then(() => {
 				this.route.navigate(['/list']);

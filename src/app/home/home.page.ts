@@ -136,7 +136,7 @@ export class HomePage {
 		if(privacy) return;
 		let alert = await this.alerter.create({
 			header: 'Privacidade',
-			message: 'Este aplicativo não manda nenhuma informação para servidores. Todos os dados ficam armazenados no próprio navegador.<br/>',
+			message: 'Este aplicativo não manda nenhuma informação para servidores. Todos os dados ficam armazenados no próprio celular.<br/>',
 			buttons: [{
 				text: 'Que bom!',
 				cssClass: 'secondary',
