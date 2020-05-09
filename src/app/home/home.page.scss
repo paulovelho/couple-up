@@ -12,11 +12,12 @@ button {
 }
 
 .result {
-	width: 600px;
+	width: 80%;
 	margin: auto;
 
-	span {
+	.title {
 		width: 100%;
+		font-weight: bold;
 		text-align: center;
 	}
 }

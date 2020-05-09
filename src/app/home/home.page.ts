@@ -1,4 +1,4 @@
-import { Component} from '@angular/core';
+import { Component, NgZone } from '@angular/core';
 import { Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
 import { FormsModule } from '@angular/forms';
@@ -16,6 +16,7 @@ export class HomePage {
 
 	constructor(
 		private route: Router,
+		private zone: NgZone,
 		private alerter: AlertController,
 		private active: ActiveService,
 		private store: StoreService,
@@ -25,6 +26,7 @@ export class HomePage {
 	public users: Array<any> = [];
 	public selected: any = [];
 	public result: Array<any> = [];
+	public calculated: boolean = false;
 	public comparingMembers: string;
 
 	public async message(message: string) {
@@ -102,6 +104,7 @@ export class HomePage {
 	}
 
 	public clickPerson() {
+		this.calculated = false;
 		this.result = [];
 		this.comparingMembers = "";
 		this.selected = this.users.filter(u => u.selected);
@@ -121,7 +124,7 @@ export class HomePage {
 			intersection = this.intersect(intersection, person.categories);
 		});
 		this.result = intersection;
-
+		this.calculated = true;
 	}
 
 	private intersect(arr1, arr2) {
@@ -133,7 +136,7 @@ export class HomePage {
 		if(privacy) return;
 		let alert = await this.alerter.create({
 			header: 'Privacidade',
-			message: 'Este aplicativo não manda nenhuma informação para servidores. Todos os dados ficam armazenados no próprio navegador.<br/>',
+			message: 'Este aplicativo não manda nenhuma informação para servidores. Todos os dados ficam armazenados no próprio celular.<br/>',
 			buttons: [{
 				text: 'Que bom!',
 				cssClass: 'secondary',
@@ -147,8 +150,16 @@ export class HomePage {
 	}
 
 	ionViewWillEnter() {
+		console.info("ion view will enter");
 		this.privacyMessage();
 		this.loadUsers();
+		this.calculated = false;
+		this.result = [];
+		this.selected = [];
+	}
+
+	ionViewDidLeave() {
+		this.selected = [];
 	}
 
 }

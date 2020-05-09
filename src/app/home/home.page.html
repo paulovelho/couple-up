@@ -41,13 +41,21 @@
 
 	<br/>
 
-	<div class="result" *ngIf="result.length > 0">
+	
+	<ion-row class="result" *ngIf="calculated"><ion-col>
 		<hr/>
-		<div>
-			Resultado da comparação de listas entre {{ comparingMembers }}
-		</div>
+		<ion-row class="title">
+			<ion-col>Resultado da comparação de listas entre {{ comparingMembers }}</ion-col>
+		</ion-row>
+		<ion-row *ngIf="result.length == 0" text-center>
+			<ion-col>
+				<br/><br/>
+				Não há itens em comum nas listas de {{ comparingMembers }}.<br/>
+				O que não significa que vocês não sejam um casal fofo!<br/><br/>
+				&lt;3
+			</ion-col>
+		</ion-row>
 		<categories-list [categories]="result"></categories-list>
-	</div>
+	</ion-col></ion-row>
 
 </ion-content>
-
